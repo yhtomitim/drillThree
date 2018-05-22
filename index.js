@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.send(data);
 });
 
+app.get('/:id', (req, res) => {
+  res.send({ message: 'id route' });
+});
+
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 

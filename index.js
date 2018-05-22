@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.json(data);
+  res.send(data);
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

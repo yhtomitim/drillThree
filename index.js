@@ -14,14 +14,20 @@ app.get('/', (req, res) => {
 app.get('/:id', (req, res) => {
   const paramId = req.params.id;
   const dataArr = data.data;
-  filterById(paramId, dataArr);
+  sendId(filterById(paramId, dataArr), res);
   res.send({ message: 'id route' });
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 function filterById(id, data) {
-  const filteredData = data.filter(index => index.id == id);
-  console.log(filteredData);
-  
+  return data.filter(index => index.id == id);
+}
+
+function sendId(funct, res) {
+  if (!funct.length) {
+    res.status(404);
+    return res.json({ message: 'No record found!' });
+  }
+  return res.send({ data: funct[0] });
 }

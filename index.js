@@ -15,7 +15,6 @@ app.get('/:id', (req, res) => {
   const paramId = req.params.id;
   const dataArr = data.data;
   sendId(filterById(paramId, dataArr), res);
-  res.send({ message: 'id route' });
 });
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
